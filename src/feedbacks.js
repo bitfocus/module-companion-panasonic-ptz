@@ -315,5 +315,84 @@ export function getFeedbackDefinitions(self) {
 		}
 	}
 
+	if (SERIES.feedbacks.uhdCrop) {
+		feedbacks.uhdCropOutputSelection = {
+			type: 'boolean',
+			name: 'UHD Crop - Output Selection',
+			description: 'Indicate which of the 3 crops (Yellow / Green / Magenta) is selected for output',
+			defaultStyle: {
+				color: foregroundColor,
+				bgcolor: backgroundColorRed,
+			},
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Select Crop',
+					id: 'option',
+					default: 'Yellow',
+					choices: [
+						{ id: 'Yellow', label: 'Yellow' },
+						{ id: 'Green', label: 'Green' },
+						{ id: 'Magenta', label: 'Magenta' },
+					],
+				},
+			],
+			callback: function (feedback) {
+				const opt = feedback.options
+				return opt.option === self.data.uhdCropOutput
+			},
+		}
+		feedbacks.uhdCropSDIEnabled = {
+			type: 'boolean',
+			name: 'UHD Crop - Enabled SDI',
+			description: 'Indicate whether the SDI output is cropped or full',
+			defaultStyle: {
+				color: foregroundColor,
+				bgcolor: backgroundColorRed,
+			},
+			options: [
+				{
+					type: 'checkbox',
+					label: 'Cropped?',
+					id: 'option',
+					default: '1',
+					choices: [
+						{ id: 'OFF', label: 'Full' },
+						{ id: 'ON', label: 'Cropped' },
+					],
+				},
+			],
+			callback: function (feedback) {
+				const opt = feedback.options
+				return opt.option === self.data.uhdCropSDIEnabled
+			},
+		}
+		feedbacks.uhdCropIPEnabled = {
+			type: 'boolean',
+			name: 'UHD Crop - Enabled IP',
+			description: 'Indicate whether the IP output is cropped or full',
+			defaultStyle: {
+				color: foregroundColor,
+				bgcolor: backgroundColorRed,
+			},
+			options: [
+				{
+					type: 'checkbox',
+					label: 'Cropped?',
+					id: 'option',
+					default: '1',
+					choices: [
+						{ id: 'OFF', label: 'Full' },
+						{ id: 'ON', label: 'Cropped' },
+					],
+				},
+			],
+			callback: function (feedback) {
+				const opt = feedback.options
+				return opt.option === self.data.uhdCropIPEnabled
+			},
+		}
+	}
+
 	return feedbacks
 }

@@ -2006,5 +2006,303 @@ export function getPresetDefinitions(self) {
 		}
 	}
 
+
+	// ##########################
+	// #### UHD Crop Presets ####
+	// ##########################
+
+	if (seriesActions.uhdCrop) {
+		const cropColors = {yellow: [255, 255, 0], green: [0, 255, 0], magenta: [255, 0, 255]}; // [r, g, b]
+		var color, rgb, rgb_dim, black, actionPrefix;
+		for (color in cropColors) {
+			rgb = combineRgb(cropColors[color][0], cropColors[color][1], cropColors[color][2])
+			rgb_dim = combineRgb(Math.max(192, cropColors[color][0]), Math.max(192, cropColors[color][1]), Math.max(192, cropColors[color][2]))
+			black = combineRgb(0, 0, 0)
+			actionPrefix = 'uhdCrop' + (color.charAt(0).toUpperCase() + color.slice(1))
+
+			presets[`${color}-pan-tilt-up`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'UP',
+				style: {
+					text: '↑',
+					png64: self.ICON_UP,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'Up',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-down`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'DOWN',
+				style: {
+					text: '↓',
+					png64: self.ICON_DOWN,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'Down',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-left`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'LEFT',
+				style: {
+					text: '←',
+					png64: self.ICON_LEFT,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'Left',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-right`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'RIGHT',
+				style: {
+					text: '→',
+					png64: self.ICON_RIGHT,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'Right',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-up-right`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'UP RIGHT',
+				style: {
+					text: '↗',
+					png64: self.ICON_UP_RIGHT,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'UpRight',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-up-left`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'UP LEFT',
+				style: {
+					text: '↖',
+					png64: self.ICON_UP_LEFT,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'UpLeft',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-down-left`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'DOWN LEFT',
+				style: {
+					text: '↙',
+					png64: self.ICON_DOWN_LEFT,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'DownLeft',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-pan-tilt-down-right`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: 'DOWN RIGHT',
+				style: {
+					text: '↘',
+					png64: self.ICON_DOWN_RIGHT,
+					pngalignment: 'center:center',
+					size: '18',
+					color: black,
+					bgcolor: rgb,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: actionPrefix + 'DownRight',
+								options: {},
+							},
+						],
+						up: [
+							{
+								actionId: actionPrefix + 'Stop',
+								options: {},
+							},
+						],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets[`${color}-output`] = {
+				type: 'button',
+				category: 'UHD Crop',
+				name: color.toUpperCase() + ' TO OUTPUT',
+				style: {
+					text: 'Crop Out ' + (color.charAt(0).toUpperCase() + color.slice(1)),
+					size: 'auto',
+					color: black,
+					bgcolor: rgb_dim,
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'uhdCropOutput' + (color.charAt(0).toUpperCase() + color.slice(1)),
+								options: {},
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [
+					{
+						feedbackId: 'uhdCropOutputSelection',
+						options: {
+							option: (color.charAt(0).toUpperCase() + color.slice(1)),
+						},
+						style: {
+							bgcolor: rgb,
+						},
+					},
+				],
+			}
+		}
+	}
+
 	return presets
 }

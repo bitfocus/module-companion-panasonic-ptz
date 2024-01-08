@@ -276,6 +276,32 @@ class PanasonicPTZInstance extends InstanceBase {
 					}
 				}
 				break
+			case 'OSI': // All OSI:xx Commands
+				if (str[1] == '16') {
+					// OSI:16:
+					if (str[2] == '1') {
+						this.data.uhdCropOutput = 'Yellow'
+					} else if (str[2] == '2') {
+						this.data.uhdCropOutput = 'Green'
+					} else if (str[2] == '3') {
+						this.data.uhdCropOutput = 'Magenta'
+					}
+				} else if (str[1] == '32') {
+					// OSI:32:
+					if (str[2] == '0') {
+						this.data.uhdCropSDIEnable = 'OFF'
+					} else if (str[2] == '1') {
+						this.data.uhdCropSDIEnable = 'ON'
+					}
+				} else if (str[1] == '33') {
+					// OSI:33:
+					if (str[2] == '0') {
+						this.data.uhdCropIPEnable = 'OFF'
+					} else if (str[2] == '1') {
+						this.data.uhdCropIPEnable = 'ON'
+					}
+				}
+				break
 			case 'OGU':
 				this.data.gainValue = str[1].toString().replace('0x', '')
 				break
@@ -315,6 +341,9 @@ class PanasonicPTZInstance extends InstanceBase {
 			colorTemperature: 'Unknown',
 			irisMode: 'NaN',
 			recallModePset: 'NaN',
+			uhdCropSDIEnable: 'Nan',
+			uhdCropIPEnable: 'Nan',
+			uhdCropOutput: 'Nan',
 		}
 
 		this.ptSpeed = 25
